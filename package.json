@@ -23,6 +23,9 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "vue": "^3.2.45"
+        "js-cookie": "^3.0.1",
+        "laravel-vite-plugin": "^0.7.3",
+        "vue": "^3.2.45",
+        "vuex": "^4.1.0"
     }
 }

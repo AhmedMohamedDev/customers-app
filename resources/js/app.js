@@ -1,28 +1,22 @@
 require('./bootstrap');
 import { createApp } from 'vue';
-// import { ElNotification } from 'element-plus'
-// import { store } from './store/store.js'
-// //import { action } from './store/action.js'
-// import ElementPlus from 'element-plus'
-// import 'element-plus/dist/index.css'
+import { store } from './store'
 
 
-    // import ExampleComponent from './components/ExampleComponent.vue';
-    // import StudentFormComponent from './components/student/StudentFormComponent.vue';
-    import ExampleComponent from './components/ExampleComponent.vue';
+// Load Componenets
+import CustomerComponent from './components/customer/CustomerComponent.vue';
+import LoginComponent from './Pages/Auth/Login.vue';
+
 
 
 
 let app=createApp({});
 
-app.component('example-component' , ExampleComponent);
-// app.component('student-form-component' , StudentFormComponent);
-// app.component('student-list-component',StudentListComponent);
-
-// const { appContext } = createApp()
-// ElNotification({}, appContext)
-
-// app.use(ElementPlus).use(store);
+// Register Componenets
+app.component('customer-component' , CustomerComponent);
+app.component('LoginComponent' , LoginComponent);
 
 
+
+app.use(store);
 app.mount("#app")

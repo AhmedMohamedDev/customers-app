@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Auth Routes
+Route::post('/login',[AuthController::class,'login']);
+
+// Customers Routes
+Route::post('/customer',[CustomerController::class,'store']);
+Route::put('/customer',[CustomerController::class,'update']);
+Route::get('/customers',[CustomerController::class,'allCustomers']);
+Route::delete('customer/{customer}', [CustomerController::class, 'destroy']);
+
+
+
