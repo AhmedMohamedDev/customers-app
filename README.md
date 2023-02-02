@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Customer CRUD App with Vue, Vux and JWT Auth
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This application is built using Vue, Vux and JWT Auth with a Laravel backend. It provides a simple way to manage customers with a simple interface.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Clone the repository to your local machine
+``git clone https://github.com/AhmedMohamedDev/customers-app``
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Change into the project directory
+``cd customers-app``
 
-## Learning Laravel
+Install the dependencies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+``npm install``
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Run Server
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+`` ./vendor/bin/sail up``
 
-## Laravel Sponsors
+Please note that this should run the migration but if you have any trouble please run ``./vendor/bin/sail artisan migrate``
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Admin Credentioals
 
-### Premium Partners
+Email : admin@email.com
+Password : admin123
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Routes
 
-## Contributing
+#### Login  
+http://localhost/dashboard
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Dashboard 
+`` http://localhost/dashboard ``
 
-## Code of Conduct
+EndPoints
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+POST      api/customer ........................ CustomerController@store
+PUT       api/customer ....................... CustomerController@update
+DELETE    api/customer/{customer} ........... CustomerController@destroy
+GET|HEAD  api/customers ................ CustomerController@allCustomers
+POST      api/login ............................... AuthController@login
+  
+```
+## Architecture
 
-## Security Vulnerabilities
+The application is based on the following architecture:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Frontend: Vue.js and Vux
+- Backend: Laravel
+- State Management: Vuex
+- Authentication: JWT with Cookies
 
-## License
+## Folders Structure
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The project consists of the following folders:
+
+- `resources/js` contains all the Vue components.
+- `app/Http/Controllers` contains all the controllers.
+- `app/Http/Requests` contains all the validation rules.
+- `app/Repositories` contains all the repository classes.
+
+## Validation
+
+Validation is done using Laravel's built-in validation system. The validation rules are stored in the `app/Http/Requests` folder.
+
+## Repository Pattern
+
+The application uses the repository pattern to separate the database logic from the rest of the application. The repository classes are stored in the `app/Repositories` folder.
+
+![repo](https://blog.logrocket.com/wp-content/uploads/2022/02/repository-pattern-diagram.png)
+
+## JWT Auth
+
+JWT authentication is done using Laravel's built-in JWT package. The authentication is done using cookies for persistence.
+
+![jwt](https://i.stack.imgur.com/0GAlG.png)
+
+## Vuex
+
+Vuex is a state management library for Vue.js applications. It provides a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion.
+
+![repo](https://miro.medium.com/v2/resize:fit:720/0*5BcWxyQW7ai1JsVd.gif)
+
+In our app, we used Vuex to handle all CRUD actions related to the Customer entity. By centralizing the state in the store, we were able to ensure that the data was consistent throughout the application, and that any changes made in one component would be reflected in all other components that relied on that data. This made our code more organized, maintainable, and predictable. Additionally, we used Vuex to handle authentication by storing the authentication status and token in the store.
+
+## Dispatching Emails
+
+Upon successful creation of a customer, the system dispatches a welcome email to the customer asynchronously. This email serves as a confirmation of the customer's successful registration and provides a warm welcome to the system.
+
+![dis](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rwosfraplff3jbd7wa08.png)
+
+## Conclusion
+
+This is a simple CRUD application that uses Vue, Vux, JWT Auth and Laravel to provide a user-friendly interface for managing customers. It uses the repository pattern to separate the database logic from the rest of the application, and JWT Auth with cookies for authentication.
+
