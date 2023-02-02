@@ -29,7 +29,7 @@ Password : admin123
 ## Routes
 
 #### Login  
-http://localhost/dashboard
+http://localhost/admin
 
 #### Dashboard 
 `` http://localhost/dashboard ``
