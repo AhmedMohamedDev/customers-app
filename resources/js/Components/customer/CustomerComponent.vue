@@ -67,7 +67,7 @@
                 </span>
             </div>
             <div class="modal-body">
-              <div class="form-group">
+              <div hidden class="form-group">
                 <label>ID</label>
                 <input type="number" class="form-control" v-model="selectedCustomer.id">
               </div>

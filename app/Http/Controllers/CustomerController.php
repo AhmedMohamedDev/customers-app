@@ -19,12 +19,6 @@ class CustomerController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
-    {
-        $customers = $this->customerRepository->all();
-        return view('customer.list')->with($customers);
-    }
-
     public function allCustomers(Request $page)
     {
        $customers = $this->customerRepository->all();
@@ -35,16 +29,10 @@ class CustomerController extends Controller
     {
         $customer = $this->customerRepository->create($request->validated());
         if ($customer) {
-            // TODO : CHECK YOU'R MAIL TRAB CREDENTIAlS CUZ IT'S REFUSED
+            // TODO : CHECK YOU'R MAILTRAB CREDENTIAlS CUZ IT'S REFUSED
            // dispatch(new SendWelcomeEmail($customer))->handle();
             return response()->json(['message' => 'Success', 'data' => $customer], 201);
         }
-    }
-
-    public function show(Customer $customer)
-    {
-        $customers = $this->customerRepository->all();
-        return view('customer.add')->with($customers);
     }
 
     public function update(CustomerRequest $request)
