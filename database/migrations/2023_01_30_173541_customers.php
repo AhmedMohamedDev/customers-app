@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firstname',100);
-            $table->string('lastname',100);
+            $table->string('first_name',100);
+            $table->string('last_name',100);
             $table->string('user_name',100)->unique();
             $table->string('email',100)->unique();
             $table->float('salary', 8, 2);
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('customers');
     }
 };
